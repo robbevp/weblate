@@ -38,7 +38,7 @@
           self: super: {
             aeidon = super.aeidon.overridePythonAttrs (old: {
               src = aeidon-src;
-              nativeBuildInputs = [ pkgs.gettext pkgs.python311Packages.flake8 ];
+              nativeBuildInputs = [ pkgs.gettext pkgs.python310Packages.flake8 ];
               buildInputs = [ pkgs.isocodes ];
               installPhase = ''
                 ${self.python.interpreter} setup.py --without-gaupol install --prefix=$out
