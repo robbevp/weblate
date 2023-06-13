@@ -82,12 +82,17 @@
               );
             pygobject = super.pygobject.overridePythonAttrs (
                 old: {
-                  buildInputs = (old.buildInputs or [ ]) ++ [ super.setuptools ];
+                  buildInputs = (old.buildInputs or [ ]) ++ [ self.setuptools ];
                 }
               );
             pyicumessageformat = super.pyicumessageformat.overridePythonAttrs (
                 old: {
-                  buildInputs = (old.buildInputs or [ ]) ++ [ super.setuptools ];
+                  buildInputs = (old.buildInputs or [ ]) ++ [ self.setuptools ];
+                }
+              );
+            borgbackup = super.borgbackup.overridePythonAttrs (
+                old: {
+                  buildInputs = (old.buildInputs or [ ]) ++ [ self.setuptools ];
                 }
               );
           }
