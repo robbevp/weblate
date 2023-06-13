@@ -92,7 +92,7 @@
               );
             borgbackup = super.borgbackup.overridePythonAttrs (
                 old: {
-                  buildInputs = (old.buildInputs or [ ]) ++ [ self.setuptools ];
+                  nativeBuildInputs = (old.buildInputs or [ ]) ++ [ self.setuptools ];
                 }
               );
           }
