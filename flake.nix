@@ -80,6 +80,11 @@
                   ];
                 }
               );
+            pygobject = super.pygobject.overridePythonAttrs (
+                old: {
+                  buildInputs = (old.buildInputs or [ ]) ++ [ super.setuptools ];
+                }
+              );
           }
         );
       }).dependencyEnv;
