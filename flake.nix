@@ -72,6 +72,14 @@
             phply = super.phply.overridePythonAttrs (old: {
               nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ self.setuptools ];
             });
+            pycairo = super.pycairo.overridePythonAttrs (
+                old: {
+                  nativeBuildInputs = [
+                    self.meson
+                    pkgs.buildPackages.pkg-config
+                  ];
+                }
+              );
           }
         );
       }).dependencyEnv;
