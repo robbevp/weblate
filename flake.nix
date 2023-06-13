@@ -95,8 +95,14 @@
                 nativeBuildInputs = (old.buildInputs or [ ]) ++ [ self.setuptools-scm ];
               }
             );
-            kombu = super.kombu.overridePythonAttrs (old: {
-              buildInputs = (old.buildInputs or [ ]) ++ [ self.setuptools ];
+            kombu = super.kombu.overridePythonAttrs (old: rec {
+              # See: https://github.com/mayflower/authentik-nix/blob/main/poetry2nix-python-overrides.nix#L44
+              version = "5.3.0b3"; # 5.2.4 broken build from source
+              src = self.fetchPypi {
+                inherit version;
+                pname = "kombu";
+                sha256 = "316df5e840f284d0671b9000bbf747da2b00f3b81433c720de66a5f659e5711d";
+              };
               nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ self.setuptools ];
             });
           }
