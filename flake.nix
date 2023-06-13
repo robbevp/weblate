@@ -73,28 +73,32 @@
               nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ self.setuptools ];
             });
             pycairo = super.pycairo.overridePythonAttrs (
-                old: {
-                  nativeBuildInputs = [
-                    self.meson
-                    pkgs.buildPackages.pkg-config
-                  ];
-                }
-              );
+              old: {
+                nativeBuildInputs = [
+                  self.meson
+                  pkgs.buildPackages.pkg-config
+                ];
+              }
+            );
             pygobject = super.pygobject.overridePythonAttrs (
-                old: {
-                  buildInputs = (old.buildInputs or [ ]) ++ [ self.setuptools ];
-                }
-              );
+              old: {
+                buildInputs = (old.buildInputs or [ ]) ++ [ self.setuptools ];
+              }
+            );
             pyicumessageformat = super.pyicumessageformat.overridePythonAttrs (
-                old: {
-                  buildInputs = (old.buildInputs or [ ]) ++ [ self.setuptools ];
-                }
-              );
+              old: {
+                buildInputs = (old.buildInputs or [ ]) ++ [ self.setuptools ];
+              }
+            );
             borgbackup = super.borgbackup.overridePythonAttrs (
-                old: {
-                  nativeBuildInputs = (old.buildInputs or [ ]) ++ [ self.setuptools-scm ];
-                }
-              );
+              old: {
+                nativeBuildInputs = (old.buildInputs or [ ]) ++ [ self.setuptools-scm ];
+              }
+            );
+            kombu = super.kombu.overridePythonAttrs (old: {
+              buildInputs = (old.buildInputs or [ ]) ++ [ self.setuptools ];
+              nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ self.setuptools ];
+            });
           }
         );
       }).dependencyEnv;
