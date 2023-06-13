@@ -85,6 +85,11 @@
                   buildInputs = (old.buildInputs or [ ]) ++ [ super.setuptools ];
                 }
               );
+            pyicumessageformat = super.pyicumessageformat.overridePythonAttrs (
+                old: {
+                  buildInputs = (old.buildInputs or [ ]) ++ [ super.setuptools ];
+                }
+              );
           }
         );
       }).dependencyEnv;
