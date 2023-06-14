@@ -115,6 +115,7 @@ let
     '');
   weblatePath = with pkgs; [
         gitSVN
+        openssh
 
         #optional
         git-review
