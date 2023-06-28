@@ -58,7 +58,7 @@ let
     EMAIL_USE_TLS = True
     EMAIL_HOST_USER = "${cfg.smtp.user}"
     SERVER_EMAIL = "${cfg.smtp.user}"
-    DEFAULT_FROM_EMAIL = "${cfg.smtp.user}"
+    DEFAULT_FROM_EMAIL = "${cfg.smtp.defaultFrom}"
     EMAIL_PORT = 587
     with open("${cfg.smtp.passwordFile}") as f:
       EMAIL_HOST_PASSWORD = f.read().rstrip("\n")
@@ -156,6 +156,12 @@ in
       smtp = {
         user = lib.mkOption {
           description = "SMTP login name.";
+          example = "weblate@weblate.example.org";
+          type = lib.types.str;
+        };
+        
+        defaultFrom = lib.mkOption {
+          description = "Default from email";
           example = "weblate@weblate.example.org";
           type = lib.types.str;
         };
